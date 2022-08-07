@@ -1,10 +1,12 @@
 import './App.css';
-import SignUp from "./components/SignUp/SignUp.js";
+import CompetitionsTable from "./components/CompetitionsTable/CompetitionsTable.js";
+import Footer from "./components/Footer/Footer.js";
 
 function App() {
     return (
         <div className="App">
-            <SignUp></SignUp>
+            <CompetitionsTable></CompetitionsTable>
+            <Footer></Footer>
         </div>
     );
 }
