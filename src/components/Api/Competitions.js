@@ -1,10 +1,10 @@
-import Axios from 'axios'
+import axios from 'axios'
 
 export default class CompetitionApi {
     constructor() {
         this.api_token = null;
         this.client = null;
-        this.api_url = process.env.REACT_APP_API_ENDPOINT;
+        this.api_url = 'http://localhost:2604/'//process.env.REACT_APP_API_ENDPOINT;
     }
 
     init = () => {
@@ -17,15 +17,35 @@ export default class CompetitionApi {
                 this.api_token
             }`;
         }
-        this.client = Axios.create({baseURL: this.api_url, timeout: 31000, headers: headers});
+        this.client = axios.create({baseURL: this.api_url, timeout: 31000, headers: headers});
         return this.client;
     };
 
-    getCompetitions = (params) => {
-        return this.init().get("/competitions", {params: params});
+    getCompetitions (params) {
+        return loadCompetitions(); //this.init().get("/competitions", params).then(data=>console.log(data));
     };
 
     createNewCompetition = (data) => {
         return this.init().post("/competition", data);
     };
+}
+
+function httpGet(theUrl) {
+    let getJSON = function httpGet(theUrl) {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", theUrl, false); // false for synchronous request
+        xmlHttp.send(null);
+        return xmlHttp.responseText;
+    };
+
+    return getJSON(theUrl)
+}
+
+function getCompetitions() {
+    return httpGet("http://localhost:2604/competitions")
+}
+
+function loadCompetitions() {
+    let json = getCompetitions();
+    return JSON.parse(json)
 }
