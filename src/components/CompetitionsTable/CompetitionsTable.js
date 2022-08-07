@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import CompetitionApi from "../Api/Competitions";
+import {styled, tableCellClasses} from "@mui/material";
 
 const columns = [
     {
@@ -42,6 +43,25 @@ const columns = [
     },
 ];
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: '#002a38',
+        color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
+
+const StyledTableRow = styled(TableRow)(({theme}) => ({
+    '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+        border: 0,
+    },
+}));
 
 function loadCompetitions() {
     const client = new CompetitionApi();
@@ -60,7 +80,7 @@ function createData(competition, organizer, location, date, updated) {
     return {competition, organizer, location, date, updated};
 }
 
-let rows =  loadCompetitions();
+let rows = loadCompetitions();
 
 export default function StickyHeadTable() {
     const [page, setPage] = React.useState(0);
@@ -82,13 +102,13 @@ export default function StickyHeadTable() {
                     <TableHead>
                         <TableRow>
                             {columns.map((column) => (
-                                <TableCell
+                                <StyledTableCell
                                     key={column.id}
                                     align={column.align}
                                     style={{minWidth: column.minWidth}}
                                 >
                                     {column.label}
-                                </TableCell>
+                                </StyledTableCell>
                             ))}
                         </TableRow>
                     </TableHead>
