@@ -1,5 +1,5 @@
 import {Typography} from "@material-ui/core";
-import CompetitionsTable from "../../components/CompetitionsTable/CompetitionsTable.js";
+import CompetitionsTable from "../../components/Competition/CompetitionsTable.js";
 
 export default function Competitions() {
     return (
