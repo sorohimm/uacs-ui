@@ -9,6 +9,8 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import CompetitionApi from "../../datasource/Api/Competitions";
 import {styled, tableCellClasses} from "@mui/material";
+import SignIn from "../../pages/SignIn/SignIn";
+import {Link} from "react-router-dom";
 
 const columns = [
     {
@@ -117,7 +119,7 @@ export default function StickyHeadTable() {
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map((row) => {
                                 return (
-                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                                    <TableRow component={Link} to={`/competition`} hover role="checkbox" tabIndex={-1} key={row.code}>
                                         {columns.map((column) => {
                                             const value = row[column.id];
                                             return (

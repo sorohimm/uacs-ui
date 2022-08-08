@@ -7,6 +7,7 @@ import Header from "./components/Header/Header.js";
 import Competitions from "./pages/Competitions/Competition.js";
 import Home from "./pages/Home/Home.js";
 import SignIn from "./pages/SignIn/SignIn";
+import SingleCompetition from "./pages/Competitions/SingleCompetition";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                     <Route exact path="/" element={<Home></Home>}/>
                     <Route exact path="/competitions" element={<Competitions></Competitions>}/>
                     <Route exact path="/login" element={<SignIn></SignIn>}/>
+                    <Route exact path="/competition" element={<SingleCompetition></SingleCompetition>}/>
                 </Routes>
             </Router>
             <Footer></Footer>
