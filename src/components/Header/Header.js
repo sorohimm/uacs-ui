@@ -8,7 +8,7 @@ import {
     useTheme,
     useMediaQuery,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import DrawerComponent from "../Drawer/Drawer.js";
 
 const useStyles = makeStyles((theme) => ({
@@ -39,14 +39,15 @@ function Header() {
 
     return (
         <AppBar position="static">
-            <CssBaseline />
+            <CssBaseline/>
             <Toolbar>
                 <Typography variant="h4" className={classes.logo}>
-                    Navbar
-
+                    <Link to="/">
+                        UACS
+                    </Link>
                 </Typography>
                 {isMobile ? (
-                    <DrawerComponent />
+                    <DrawerComponent/>
                 ) : (
                     <div className={classes.navlinks}>
                         <Link to="/" className={classes.link}>
@@ -55,10 +56,14 @@ function Header() {
                         <Link to="/competitions" className={classes.link}>
                             Competitions
                         </Link>
+                        <Link to="/login" className={classes.link}>
+                            Login
+                        </Link>
                     </div>
                 )}
             </Toolbar>
         </AppBar>
     );
 }
+
 export default Header;

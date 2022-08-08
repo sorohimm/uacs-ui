@@ -6,16 +6,18 @@ import Header from "./components/Header/Header.js";
 
 import Competitions from "./pages/Competitions/Competition.js";
 import Home from "./pages/Home/Home.js";
+import SignIn from "./pages/SignIn/SignIn";
 
 
 function App() {
     return (
         <div className="App">
             <Router>
-                <Header/>
+                <Header></Header>
                 <Routes>
-                    <Route exact path="/" element={Home}/>
-                    <Route path="/competitions" element={Competitions} />
+                    <Route exact path="/" element={<Home></Home>}/>
+                    <Route exact path="/competitions" element={<Competitions></Competitions>}/>
+                    <Route exact path="/login" element={<SignIn></SignIn>}/>
                 </Routes>
             </Router>
             <Footer></Footer>
